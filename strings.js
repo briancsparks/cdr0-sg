@@ -112,13 +112,14 @@ module.exports.startsWithOneOf = function(str, arr) {
 module.exports.splitN = function (str, count, sep = '/') {
   let result = [];
   let rest =  str.split(sep);
+  let item;
 
-  while (result.length < count) {
-    const [item, ...rest] = rest;
+  while (result.length < count && (rest.length > 0)) {
+    [item, ...rest] = rest;
     result = [...result, item];
   }
 
-  return [...result, rest.join(sep)];
+  return [result, rest.join(sep)];
 };
 
 
@@ -130,4 +131,15 @@ module.exports.lastOf = function (str, sep) {
   }
 }
 
+// --------------------------------------------------------------------------------------------------------------------
+module.exports.pad = function(x, len, ch_ =null) {
+  const ch = (ch_ !== null) ? ch_ : (typeof x === 'number') ? '0' : ' ';
+
+  let result = ''+x;
+  while (result.length < len) {
+    result = ch + result;
+  }
+
+  return result;
+}
 

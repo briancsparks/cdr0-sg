@@ -164,6 +164,17 @@ const keyMirror = module.exports.keyMirror = function(x, sep) {
   return result;
 };
 
+// --------------------------------------------------------------------------------------------------------------------
+module.exports.withLowerCaseKeys = function(obj) {
+  let result = {};
+
+  sg.keys(obj).forEach(function(key) {
+    result[key] = result[key.toLowerCase()] = obj[key];
+  });
+
+  return result;
+};
+
 
 // ------------------------------------------------------------------------------------------------------------------------
 /**

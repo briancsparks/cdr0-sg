@@ -56,3 +56,14 @@ module.exports.jsonify = function(x) {
 };
 
 
+// --------------------------------------------------------------------------------------------------------------------
+module.exports.stringify = function(x) {
+  if (typeof x === 'string') { return x; }
+
+  try {
+    return JSON.stringify(x);
+  } catch(e) {}
+
+  return ''+x;
+}
+
